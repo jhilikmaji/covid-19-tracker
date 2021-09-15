@@ -13,16 +13,15 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th>Country Name</th>
                     <th>Total Cases</th>
                     <th>Total Deaths</th>
                     <th>Total Recovered</th>
                 </tr>
                 
             </thead>
-            <tbody>
-                <tr id="data">
-
-                </tr>
+            <tbody id="data">
+                
             </tbody>
         </table>
         <button onclick="refreshData()" class="btn btn-danger btn-block">Refresh Data</button>
@@ -39,17 +38,17 @@
             var data= ''
             $.get(url,function(data){
                
-                    var html = "<table border='1|1'>";
+                    var html = "";
                         for(var c of data.Countries) {
                         html+="<tr>";
-                        html+="<td>"+data.Countries[c].TotalConfirmed+"</td>";
-                        html+="<td>"+data.Countries[c].TotalDeaths+"</td>";
-                        html+="<td>"+data.Countries[c].TotalRecovered+"</td>";
+                        html+="<td>"+c.Country+"</td>";
+                        html+="<td>"+c.TotalConfirmed+"</td>";
+                        html+="<td>"+c.TotalDeaths+"</td>";
+                        html+="<td>"+c.TotalRecovered+"</td>";
     
                         html+="</tr>";
 
 }
-html+="</table>";
 document.getElementById("data").innerHTML = html;
                 })
         }
