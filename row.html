@@ -12,11 +12,14 @@
         <h1 class="text-center mt-5">Covid 19 data</h1>
         <table class="table table-hover">
             <thead>
-                <tr>
+                <tr >
                     <th>Country Name</th>
                     <th>Total Cases</th>
+                    <th>Today's Cases</th>
                     <th>Total Deaths</th>
+                    <th>Today's Deaths</th>
                     <th>Total Recovered</th>
+                    <th>Today's Recovered</th>
                 </tr>
                 
             </thead>
@@ -43,8 +46,11 @@
                         html+="<tr>";
                         html+="<td>"+c.Country+"</td>";
                         html+="<td>"+c.TotalConfirmed+"</td>";
+                        html+="<td>"+c.NewConfirmed+"</td>";
                         html+="<td>"+c.TotalDeaths+"</td>";
+                        html+="<td>"+c.NewDeaths+"</td>";
                         html+="<td>"+c.TotalRecovered+"</td>";
+                        html+="<td>"+c.NewRecovered+"</td>";
     
                         html+="</tr>";
 
