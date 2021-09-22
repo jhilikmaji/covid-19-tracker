@@ -5,12 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>covid19 table</title>
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mt-5">Covid 19 data</h1>
-        <table class="table table-hover">
+        <div class="heading">
+            <P>C<span><img src="pic/pic5.png" alt=""></span>VID - 19 DATA</P>
+            
+        </div>
+        <div class="row">
+           <div class="col-md-6">
+               <div class="row">
+                   <div class="col-md-3"> 
+                       <div class="col-md-1"></div> 
+                       <div class="col-md-2 one"> TotalConfirmed</div>
+                    </div>
+                   <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> NewConfirmed</div>
+               </div>
+               <div class="row">
+                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> TotalDeaths</div>
+                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> NewDeaths</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> TotalRecovered</div>
+                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> NewRecovered</div>
+            </div>
+           </div>
+           <div class="col-md-6">
+               <img src="pic/pic8.jpg" alt="">
+           </div>
+
+        </div>
+        
+        <table class="table table-hover" id="mytable">
             <thead>
                 <tr >
                     <th>Country Name</th>
@@ -27,19 +57,22 @@
                 
             </tbody>
         </table>
-        <button onclick="refreshData()" class="btn btn-danger btn-block">Refresh Data</button>
+      
     </div>
     
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $(document).ready(function(){
+        
         init()
 
         function init(){
             var url="https://api.covid19api.com/summary"
             var data= ''
             $.get(url,function(data){
+               
                
                     var html = "";
                         for(var c of data.Countries) {
@@ -54,18 +87,12 @@
     
                         html+="</tr>";
 
-}
-document.getElementById("data").innerHTML = html;
+        }
+    $('#data').html(html);
                 })
         }
-
+        $('#mytable').dataTable();
     })
-    function refreshData(){
-        clearData()
-        init()
-    }
-    function clearData(){
-        $("data").each()
-    }
+  
 </script>
 </html>

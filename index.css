@@ -1,0 +1,24 @@
+*{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+body{
+    background-image: url("pic/pic1.jpg");
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    background-attachment: fixed;
+
+}
+.heading p{
+    margin-left: 2rem !important;
+    font-size:3rem;
+    letter-spacing: 0.5rem;
+    font-weight: 600; 
+    /* position: fixed; */
+}
+span img{
+    border-radius: 50%;
+    height: 6rem;
+    width: 6rem;
+}
+
