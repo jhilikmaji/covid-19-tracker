@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <div class="heading">
-            <P>C<span><img src="pic/pic5.png" alt=""></span>VID - 19 DATA</P>
+            <P>C<span><img src="pic/pic5.png" alt=""></span>&nbsp;&nbsp;VID - 19 DATA</P>
             
         </div>
         <div class="row">
@@ -21,17 +21,17 @@
                <div class="row">
                    <div class="col-md-3"> 
                        <div class="col-md-1"></div> 
-                       <div class="col-md-2 one"> TotalConfirmed</div>
+                       <div class="col-md-2 one"> <p id="TotalConfirmed"></p></div>
                     </div>
-                   <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> NewConfirmed</div>
+                   <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> <p id="NewConfirmed"></p></div>
                </div>
                <div class="row">
-                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> TotalDeaths</div>
-                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> NewDeaths</div>
+                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> <p id="TotalDeaths"></p></div>
+                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> <p id="NewDeaths"></p></div>
             </div>
             <div class="row">
-                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> TotalRecovered</div>
-                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> NewRecovered</div>
+                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div><p id="TotalRecovered"></p> </div>
+                <div class="col-md-3"> <div class="col-md-1"></div> <div class="col-md-2"></div> <p id="NewRecovered"></p></div>
             </div>
            </div>
            <div class="col-md-6">
@@ -73,7 +73,14 @@
             var data= ''
             $.get(url,function(data){
                
+               const NewConfirmed = data.Global.NewConfirmed;
+               const TotalConfirmed = data.Global.TotalConfirmed;
+               const TotalDeaths = data.Global.TotalDeaths;
+               const NewDeaths = data.Global.NewDeaths;
+               const TotalRecovered = data.Global.TotalRecovered;
+               const NewRecovered = data.Global.NewRecovered;
                
+               console.log(NewConfirmed);
                     var html = "";
                         for(var c of data.Countries) {
                         html+="<tr>";
@@ -86,13 +93,21 @@
                         html+="<td>"+c.NewRecovered+"</td>";
     
                         html+="</tr>";
+                        $('#mytable').dataTable();
+                        $('#NewConfirmed').html(NewConfirmed);
+                        $('#TotalConfirmed').html(TotalConfirmed);
+                        $('#TotalDeaths').html(TotalDeaths);
+                        $('#NewDeaths').html(NewDeaths);
+                        $('#TotalRecovered').html(TotalRecovered);
+                        $('#NewRecovered').html(NewRecovered);
+                        
 
         }
     $('#data').html(html);
                 })
         }
-        $('#mytable').dataTable();
+        
     })
-  
+
 </script>
 </html>
